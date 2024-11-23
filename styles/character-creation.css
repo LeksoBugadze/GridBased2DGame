@@ -1,0 +1,82 @@
+.character-creation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100vh;
+}
+
+.wrapper-character-creation{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.character-creation label{
+    color: #d3d8d9;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.inner-div button{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: #c5d2ce;
+    font-size: 30px;
+    border: 2px solid #545e72;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.character-creation button:active{
+    background-color: #545e72;
+    color: white;
+}
+
+.inner-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.character-creation .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character-creation input{
+    font-size: 30px;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #545e72;
+    border-bottom: 2px solid #545e72;
+    text-align: center;
+    background-color: transparent;
+    color: #c5d2ce;
+    height: 45px;
+}
+
+.character-creation p{
+    font-size: 50px;
+    color: #d3d8d9;
+}
+
+.skill-points{
+    transition: all 0.2s;
+}
+
+.finish{
+    font-size: 35px;
+    padding: 5px 30px;
+    background-color: #464459;
+    border: 4px solid #545e72;
+    color:#c5d2ce;
+    margin-top: 50px;
+}
+
+

@@ -1,0 +1,140 @@
+.game{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.victory-modal{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    transition: all 0.2s;
+}
+.victory-modal p{
+    font-size: 100px;
+    color: #F0A036;
+    border: 10px solid #F0A036;
+    padding: 20px 100px;
+    margin: 0;
+    text-align: center;
+}
+
+.grid{
+    display: none;
+    grid-template-columns: repeat(7,128px) ;
+    grid-template-rows: repeat(6,128px);
+    transition: all 0.2s;
+    transform: rotateX(-45deg) rotateZ(45deg);
+    transform-style: preserve-3d;
+    margin: 100px;
+    width: auto; 
+    height: auto;
+}
+
+
+.grid-div{
+    background-image:url("../assets/Art/high-ground-tile-2.png");
+    position: relative;
+    border: 1px solid #5d7680;   
+    background-color: #464459;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transform: translateZ(0);
+    
+}
+
+img{
+    position: absolute;
+    z-index: 1;
+}
+
+.chest{
+    height: 128px;
+    width: 128px;
+}
+
+.player{
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    transform-style: preserve-3d;
+    z-index: 2;
+    
+}
+
+.enemy{
+    width: 128px;
+    height: 128px;
+    background-image: url("../assets/Art/EnemyPlaceholder-sheet-sheet.png");
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    position: absolute;
+    z-index: 2;
+}
+
+.enemy .health{
+    display: none;
+}
+/* .enemy:hover{
+    outline: 5px solid black;
+}
+
+.
+
+/* .enemy:hover .health{
+    display: block;
+}  */
+
+.health{
+    position: fixed;
+    top: 0;
+    color: white;
+    font-weight: bold;
+    background-color: #a52a2a;
+    width: 410px;
+    padding: 10px 0;
+    border:4px solid #464459;
+    text-align: center;
+    font-size: 30px;
+    transform: rotateX(45deg) rotateZ(-45deg);
+}
+
+.start{
+    font-size: 40px;
+    padding: 8px 50px;
+    border: 3px solid #545e72;
+    background-color: #464459;
+    position: fixed;
+    top: 50%;
+    right:50%;
+    translate: 50% -50%;
+    color: #c5d2ce;
+}
+
+
+.death-screen{
+    display: none;
+    background-color: black;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.death{
+    font-size: 60px;
+    color: red;
+}
+
+
+

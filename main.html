@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS Web Game</title>
+    <script type="module" src="/scripts/index.js" defer></script>
+    
+    <link rel="stylesheet" href="/styles/general.css">
+    <link rel="stylesheet" href="/styles/gameBoard.css">
+    <link rel="stylesheet" href="/styles/character-creation.css">
+    <link rel="stylesheet" href="/styles/userIterface.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="wrapper">
+        <audio class="OST" src="/assets/Sound/OST.mp3" loop></audio>
+        <audio class="Battle-OST" src="/assets/Sound//BattleOST.m4a" loop></audio>
+        <div class="victory-modal">
+        
+        </div>
+        <div class="game">
+            
+            <button class="start">Start Game</button>
+            <div class="grid">
+            </div>
+            <div class="UI">
+                <div class="character-stats">
+                    
+                </div>
+                <div class="wrapper">
+                    <div class="actions-wrapper">
+                        <div class="container-actions">
+                            <div class="title-name-actions">Actions</div>
+                            <div class="input-label-actions">
+                                <input type="radio" name="actions" id="action" class="action-radio" checked>
+                                <span class="checkmark"></span>
+                            </div>
+                        </div>
+                        <div class="container-movement">
+                            <div class="title-name-movement">Movement</div>
+                            <div class="input-label-movement">
+                                <input type="radio" name="movemnt" id="movement" class="movement-radio" checked>
+                                <span class="checkmark"></span>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="health-player"></div>
+                    <div class="error"></div>
+                    <div class="ui-buttons">
+                        <button class="attack">Attack</button>
+                        <button class="move">Move</button>
+                        <button class="turn">End Turn</button>
+                    </div> 
+            </div>
+        </div>
+        <div class="death-screen">
+            <p class="death">YOU ARE DEAD</p>
+        </div>
+    </main>
+    <div class="wrapper-character-creation">
+        <div class="character-creation">
+            <p>Skill points: <span class="skill-points"></span></p>         
+        </div>
+        <div class="error"></div>
+        <button class="finish">Create Character</button>
+    </div>
+    
+</body>
+</html>
