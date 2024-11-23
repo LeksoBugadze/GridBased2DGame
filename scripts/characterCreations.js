@@ -4,6 +4,8 @@ const startGameButton = document.querySelector('.start');
 const charCreation=document.querySelector('.character-creation');
 export const wrapper=document.querySelector('.wrapper-character-creation')
 
+console.log('test');
+
 let skillPoints=3;
 
 
