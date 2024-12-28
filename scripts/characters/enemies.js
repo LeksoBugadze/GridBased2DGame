@@ -1,24 +1,23 @@
 export class Enemy{
-    #health;
-    #damage=10;
+    #health=20;
+    #currentHealth=this.#health;
+    #damage=50;
     #x;
     #y;
+    #type;
+    charged=false;
 
     constructor(enemy){
-        this.#health=enemy.health;
-        this.#damage=enemy.damage;
+        this.#type=enemy.type;
         this.#x=enemy.x;
-        this.#y=enemy.y; 
+        this.#y=enemy.y;
     }
 
-    takeDamage(damage,element){
-        this.#health-=damage;
-        // element.querySelector('.enemy').querySelector('.health').innerHTML=
-        // `${this.#health}/10`;
-        // if(this.#health<=0){
-        //     element.querySelector('.enemy').remove();
-        // }
-        return this.#health;
+    takeDamage(damage){
+        this.#currentHealth-=damage;
+        const enemyHealth=document.querySelector('.enemy-heath-container');
+        enemyHealth.innerHTML=`${this.#currentHealth}/${this.#health}`;
+        return this.#currentHealth;
     }
 
    
@@ -27,24 +26,27 @@ export class Enemy{
         let saveY = this.#y;
         let saveX = this.#x;
 
-
+        let xInc;
+        let xDec;
+        let yInc;
+        let yDec;
         
         grid[this.#x][this.#y]='empty';
 
         if(playerX>this.#x){
             this.#x++;
-            
+            xInc=true;
         }else if(playerX<this.#x){
             this.#x--;
-            
+            xDec=true;
         }
 
         if(playerY>this.#y){
             this.#y++;
-            
+            yInc=true;
         }else if(playerY<this.#y){
             this.#y--;
-            
+            yDec=true;
         }
 
         if (grid[this.#x][this.#y] !== 'empty') {
@@ -52,25 +54,25 @@ export class Enemy{
             this.#x = saveX;
             this.#y = saveY;
             
-            if(xOp){
-                this.#y++;
-            }
-            if(yOp){
+            if(xInc&&yInc){
+                if(this.#x++>5){
+                    this.#x--;
+                }else this.#x++;
+            }else if(xInc){
                 this.#x++;
-            }
-
-
-            if (grid[this.#x][this.#y] !== 'empty') {
-                this.#x = saveX; 
-
-                if (playerY > this.#y) {
-                    this.#y++;
-                } else if (playerY < this.#y) {
-                    this.#y--;
-                }
+                this.#y++;
+            }else if(yInc){
+                this.#x--;
+                this.#y++;
+            }else if(yDec){
+                this.#x--;
+                this.#y--;
+            }else if(xDec){
+                this.x--;
+                this.y++;
             }
         }
-
+        
         grid[this.#x][this.#y] = 'enemy';
 
         return { x: this.#x, y: this.#y };
@@ -85,14 +87,18 @@ export class Enemy{
         return this.#health; 
     }
     
+    getCurrentHealth(){
+        return this.#currentHealth;
+    }
+    
     getDamage(){
         return this.#damage;
     }
     
-    getRange(){
-        return this.getRange;
-    }
 
+    getType(){
+        return this.#type;
+    }
     getX(){return this.#x;}
     getY(){return this.#y;}
 }

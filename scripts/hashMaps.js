@@ -8,24 +8,24 @@ const mapGet=new Map();
 const mapCreateHtml=new Map();
 
 
-mapInc.set('dex', () => player.increaseDex());
-mapInc.set('str', () => player.increaseStr());
-mapInc.set('int', () => player.increaseInt());
+mapInc.set('might', () => player.increaseMight());
+mapInc.set('endur', () => player.increaseEndur());
+mapInc.set('magic', () => player.increaseMagic());
 mapInc.set('const', () => player.increaseConst());
 
-mapDec.set('dex', () => player.decreaseDex());
-mapDec.set('str', () => player.decreaseStr());
-mapDec.set('int', () => player.decreaseInt());
+mapDec.set('might', () => player.decreaseMight());
+mapDec.set('endur', () => player.decreaseEndur());
+mapDec.set('magic', () => player.decreaseMagic());
 mapDec.set('const', () => player.decreaseConst());
 
-mapGet.set('dex', () => player.getDex());
-mapGet.set('str', () => player.getStr());
-mapGet.set('int', () => player.getInt());
+mapGet.set('might', () => player.getMight());
+mapGet.set('endur', () => player.getEndur());
+mapGet.set('magic', () => player.getMagic());
 mapGet.set('const', () => player.getConst());
 
-mapCreateHtml.set('dex','Dexterity');
-mapCreateHtml.set('str','Strength');
-mapCreateHtml.set('int','Intelligence');
+mapCreateHtml.set('might','Might');
+mapCreateHtml.set('endur','Endurance');
+mapCreateHtml.set('magic','Magic');
 mapCreateHtml.set('const','Constitution');
 
 export {mapInc,mapDec,mapGet,mapCreateHtml,player};
