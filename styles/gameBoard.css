@@ -18,8 +18,6 @@
 }
 .victory-modal p{
     font-size: 100px;
-    color: #F0A036;
-    border: 10px solid #F0A036;
     padding: 20px 100px;
     margin: 0;
     text-align: center;
@@ -35,6 +33,7 @@
     margin: 100px;
     width: auto; 
     height: auto;
+    margin-left: 200px;
 }
 
 
@@ -47,32 +46,49 @@
     padding: 0;
     margin: 0;
     transform: translateZ(0);
-    
+    z-index: 2;  
 }
 
 img{
+    height: 128px;
+    width: 128px;
     position: absolute;
     z-index: 1;
 }
-
+/* 
 .chest{
     height: 128px;
     width: 128px;
-}
+} */
 
 .player{
+    object-fit: cover;
     position: absolute;
+    background-image: url('/assets/Art/PlayerSheet.png');
+    background-repeat: no-repeat;
     width: 128px;
     height: 128px;
     transform-style: preserve-3d;
     z-index: 2;
-    
+    background-size: cover;
 }
 
 .enemy{
+    
     width: 128px;
     height: 128px;
-    background-image: url("../assets/Art/EnemyPlaceholder-sheet-sheet.png");
+    background-image: url("../assets/Art/Enemy-Sheet.png");
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    position: absolute;
+    z-index: 2;
+    background-size: cover;
+}
+
+.range{
+    width: 128px;
+    height: 128px;
+    background-image: url("../assets/Art/rangeEnemy-common-sheet.png");
     background-repeat: no-repeat;
     transform-style: preserve-3d;
     position: absolute;
@@ -106,17 +122,6 @@ img{
     transform: rotateX(45deg) rotateZ(-45deg);
 }
 
-.start{
-    font-size: 40px;
-    padding: 8px 50px;
-    border: 3px solid #545e72;
-    background-color: #464459;
-    position: fixed;
-    top: 50%;
-    right:50%;
-    translate: 50% -50%;
-    color: #c5d2ce;
-}
 
 
 .death-screen{
@@ -132,9 +137,104 @@ img{
 }
 
 .death{
-    font-size: 60px;
+    font-size: 100px;
     color: red;
 }
 
 
+@media (min-width:0px)and (max-width:541px) {
+    .game{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .grid{
+        grid-template-columns: repeat(7,40px) ;
+        grid-template-rows: repeat(6,40px);
+        margin: 30px 0;
+    }
+    .div-container{
+        flex: 2;
+    }
+    img{
+        width: 40px;
+        height: 40px;
+    }
+    .enemy{
+        height: 40px;
+        width: 40px;
+    }
+    .player{
+        height: 40px;
+        width: 40px;
+    }
+    .victory-modal p{
+        font-size: 30px;
+        padding: 10px 50px;
+    }
+}
 
+@media (min-width:541px)and (max-width:1000px) {
+    .game{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .grid{
+        grid-template-columns: repeat(7,64px) ;
+        grid-template-rows: repeat(6,64px);
+        margin: 30px 0;
+    }
+    .div-container{
+        flex: 2;
+    }
+    img{
+        width: 64px;
+        height: 64px;
+    }
+    .enemy{
+        height: 64px;
+        width: 64px;
+    }
+    .player{
+        height: 64px;
+        width: 64px;
+    }
+    .victory-modal p{
+        font-size: 50px;
+        padding: 10px 100px;
+    }
+}
+
+@media (min-width:1001px)and (max-width:1800px) {
+    .game{
+        display: flex;
+        /* flex-direction: column; */
+        gap: 0px;
+    }
+    .grid{
+        grid-template-columns: repeat(7,64px) ;
+        grid-template-rows: repeat(6,64px);
+        margin: 30px 0;
+    }
+    .div-container{
+        flex: 2;
+        margin: 0 70px;
+    }
+    img{
+        width: 64px;
+        height: 64px;
+    }
+    .enemy{
+        height: 64px;
+        width: 64px;
+    }
+    .player{
+        height: 64px;
+        width: 64px;
+    }
+    .victory-modal p{
+        font-size: 50px;
+        padding: 10px 100px;
+    }
+}

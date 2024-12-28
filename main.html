@@ -10,45 +10,81 @@
     <link rel="stylesheet" href="/styles/gameBoard.css">
     <link rel="stylesheet" href="/styles/character-creation.css">
     <link rel="stylesheet" href="/styles/userIterface.css">
+    <link rel="stylesheet" href="styles/settings.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="wrapper">
+        
         <audio class="OST" src="/assets/Sound/OST.mp3" loop></audio>
         <audio class="Battle-OST" src="/assets/Sound//BattleOST.m4a" loop></audio>
+        <audio class="hit-sound" src="/assets/Sound/Hit-Sound.wav" ></audio>
+        <audio class="menu-sound" src="/assets/Sound/Button-sound.mp3"></audio>
+        <audio class="charging" src="assets/Sound/charging-spell.wav"></audio>
+        <audio class="spell" src="assets/Sound/rangeAttack-sound.wav"></audio>
+        
         <div class="victory-modal">
         
         </div>
+        <div class="btn-container">
+            <button class="settings-container"><img src="/assets/Art/Settings.png" alt="settings" class="settings"></button>
+            <button class="settings-container"><img src="/assets/Art/Audio-OFF.png" alt="settings" class="audio"></button>
+        </div>
         <div class="game">
-            
-            <button class="start">Start Game</button>
-            <div class="grid">
+
+            <div class="buttons-div">
+                <button class="start">Start Game</button>
             </div>
+            <div class="settings-div">
+                <div>
+                    <label for="audio-range-input-OST">Background music</label>
+                    <div class="input-container">
+                        <input type="range" id="audio-range-input-OST"min="0" max="100">
+                        <div class="input1-value">50%</div>
+                    </div> 
+                </div>
+                <div>
+                    <label for="audio-range-input-sfx">Sound effects</label>
+                    <div class="input-container">
+                        <input type="range" id="audio-range-input-sfx" min="0" max="100">
+                        <div class="input2-value">50%</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="audio-range-input-menu">Menu sounds</label>
+                    <div class="input-container">
+                        <input type="range" id="audio-range-input-menu" min="0" max="100">
+                        <div class="input3-value">50%</div>
+                    </div>
+                </div>
+                <button class="close-settings">Close</button>
+            </div>
+            <div class="level-rewards">
+                
+            </div>
+            <div class="item-rewards">
+                
+            </div>
+            <div class="div-container">
+                
+                <div class="grid">
+                </div>
+            </div>
+            
             <div class="UI">
+                <div class="turn-modal"></div>
                 <div class="character-stats">
                     
                 </div>
                 <div class="wrapper">
-                    <div class="actions-wrapper">
-                        <div class="container-actions">
-                            <div class="title-name-actions">Actions</div>
-                            <div class="input-label-actions">
-                                <input type="radio" name="actions" id="action" class="action-radio" checked>
-                                <span class="checkmark"></span>
-                            </div>
-                        </div>
-                        <div class="container-movement">
-                            <div class="title-name-movement">Movement</div>
-                            <div class="input-label-movement">
-                                <input type="radio" name="movemnt" id="movement" class="movement-radio" checked>
-                                <span class="checkmark"></span>
-                            </div>
-                        </div>            
+                    <div class="enemy-heath-container">
                     </div>
                     <div class="health-player"></div>
+                    <div class="stamina"></div>
+                    <div class="mana"></div>
                     <div class="error"></div>
                     <div class="ui-buttons">
                         <button class="attack">Attack</button>

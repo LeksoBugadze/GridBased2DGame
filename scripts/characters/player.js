@@ -1,64 +1,147 @@
 export class Player{
     #health;
     #currentHealth;
+    #stamina;
+    #currentStamina;
+    #mana;
+    #currentMana;
     #damage;
-    #range=1;
-    #dexterity=10;
-    #strength=10;
-    #intelligence=10;
+    // #dexterity=10;
+    // #strength=10;
+    // #intelligence=10;
     #constitution=10;
+    #might=10;
+    #endurance=100;
+    #magic=10;
+    #deathCheck=false;
 
     constructor(){
         this.calcLife();
         this.calcDmg();
+        this.calcEndur();
+        this.calcMana();
     }
 
-    getDamage(){
-        return this.#damage;
-    }
-    
-    getHealth(){
-        return this.#health;
-    }
-
-    getRange(){
-        return this.#range;
-    }
+    getDeathCheck(){ return this.#deathCheck }
+    getDamage(){ return this.#damage }
+    getHealth(){ return this.#health }
+    getStamina(){ return this.#stamina }
+    getMana(){ return this.#mana }
 
     calcLife(){
         this.calcDmg();
         this.#health=this.#constitution*10;
         this.#currentHealth=this.#health;
         document.querySelector('.health-player').innerHTML=`
-            ${this.#currentHealth}/${this.#health}
+            ${this.#currentHealth} / ${this.#health}
         `
         return this.#health;
     }
-    calcDmg(){return this.#damage=this.#strength}
-    
-    getDex(){return this.#dexterity}
-    getStr(){return this.#strength}
-    getInt(){return this.#intelligence}
-    getConst(){return this.#constitution}
 
-    increaseDex(){return this.#dexterity+=1;}
-    increaseStr(){return this.#strength+=1;}
-    increaseInt(){return this.#intelligence+=1;}
+    calcEndur(){
+       this.#stamina=this.#endurance;
+       this.#currentStamina=this.#stamina;
+       document.querySelector('.stamina').innerHTML=`
+        ${this.#currentStamina} / ${this.#stamina}
+       `
+       return this.#stamina;
+    }
+
+    calcMana(){
+        this.#mana=this.#magic*10;
+        this.#currentMana=this.#mana;
+        document.querySelector('.mana').innerHTML=`
+            ${this.#currentMana} / ${this.#mana}
+        `
+         return this.#mana;
+    }
+
+    calcDmg(){return this.#damage=this.#might}
+    
+  
+    getMight(){return this.#might}
+    getEndur(){return this.#endurance}
+    getMagic(){return this.#magic}
+    getConst(){return this.#constitution}
+    getCurrentStamina(){return this.#currentStamina}
+   
+    increaseMight(){return this.#might+=1}
+    increaseEndur(){
+        this.#endurance+=1;
+        this.calcEndur();
+        return this.#endurance;
+    }
+    increaseMagic(){
+        this.#magic+=1
+        this.calcMana();
+        return this.#magic;
+    }
     increaseConst(){
         this.#constitution+=1;
         this.calcLife();
         return this.#constitution;
     }
 
-    decreaseDex(){return this.#dexterity-=1;}
-    decreaseStr(){return this.#strength-=1;}
-    decreaseInt(){return this.#intelligence-=1;}
+
+    decreaseMight(){return this.#might-=1}
+    decreaseEndur(){
+        this.#endurance-=1;
+        this.calcEndur();
+        return this.#endurance; 
+    }
+    decreaseMagic(){
+        this.#magic-=1;
+        this.#mana();
+        return this.#magic; 
+    }
     decreaseConst(){
         this.#constitution-=1;
         this.calcLife();
         return this.#constitution; 
     }
     
+    staminaUse(param){
+        this.#currentStamina-=param;
+        document.querySelector('.stamina').innerHTML=`
+            ${this.#currentStamina} / ${this.#stamina}
+        `
+        return this.#currentStamina;
+    }
+
+    increaseDamage(param){
+        // console.log(`Before:${this.#damage}`);
+        this.#damage+=param;
+        // console.log(`After:${this.#damage}`);
+        return this.#damage;
+    }
+
+    increaseStamina(param){
+        this.#stamina+=param;
+        document.querySelector('.stamina').innerHTML=`
+            ${this.#currentStamina} / ${this.#stamina}
+        `
+        return this.#stamina;
+    }
+
+    increaseHealth(param){
+        this.#health+=param;
+        document.querySelector('.health-player').innerHTML=`
+            ${this.#currentHealth} / ${this.#health}
+        `
+        return this.#health;
+    }
+
+    turnStaminaRecovery(){
+        this.#currentStamina+=Math.round((this.#stamina*25)/100);
+        if(this.#currentStamina>this.#stamina){
+            this.#currentStamina=this.#stamina;
+        }
+        document.querySelector('.stamina').innerHTML=`
+            ${this.#currentStamina} / ${this.#stamina}
+        `
+        return this.#currentStamina;
+    }
+
     takeDamage(damage){
         this.#currentHealth-=damage;
         
@@ -66,8 +149,10 @@ export class Player{
         setTimeout(()=>{
             document.body.style.boxShadow=`none`
         },"300");
-        document.querySelector('.health-player').innerHTML=`${this.#currentHealth}/${this.#health}`;
+        document.querySelector('.health-player').innerHTML=`${this.#currentHealth} / ${this.#health}`;
         if(this.#currentHealth<=0){
+            this.#deathCheck=true;
+            
             document.querySelector('.death-screen').style.display='flex';
             setTimeout(()=>{
                 location.reload();
@@ -103,7 +188,6 @@ export class Player{
         grid[newPlayerX][newPlayerY] = 'player';
         
 
-        document.querySelector('.movement-radio').removeAttribute('checked');
     }
 
 

@@ -77,6 +77,85 @@
     border: 4px solid #545e72;
     color:#c5d2ce;
     margin-top: 50px;
+    transition: all 0.2s;
 }
+
+.finish:hover{
+    font-size: 38px;
+}
+
+.finish:active{
+    margin-top:55px;
+}
+
+
+@media (min-width:0px)and (max-width:541px){
+    .character-creation{
+        width: 150px;
+    }
+    .character-creation input {
+        font-size: 15px;
+        height: 25px;
+    }
+    .character-creation label{
+        font-size:20px;
+    }
+    .inner-div button {
+        width: 30px;
+        height: 30px;
+        font-size:15px;
+    }
+    .character-creation p {
+        font-size: 20px;
+    }
+    .finish{
+        font-size: 20px;
+        border: 2px solid #545e72;
+        padding:5px 40px;
+    }
+    
+    .finish:hover{
+        font-size: 25px;
+    }
+}
+
+@media (min-width:541px)and (max-width:1000px){
+    .character-creation{
+        width:100%;
+    }
+    
+}
+
+@media (min-width:1001px)and (max-width:1800px){
+    .character-creation{
+        width: 300px;
+    }
+    .character-creation input {
+        font-size: 25px;
+        height: 35px;
+    }
+    .character-creation label{
+        font-size:25px;
+    }
+    .inner-div button {
+        width: 40px;
+        height: 40px;
+        font-size:25px;
+    }
+    .character-creation p {
+        font-size: 35px;
+    }
+    .finish{
+        font-size:25px;
+        border: 2px solid #545e72;
+        padding:5px 90px;
+    }
+    
+    .finish:hover{
+        font-size: 35px;
+    }
+    
+}
+
 
 

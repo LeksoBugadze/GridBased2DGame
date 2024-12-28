@@ -1,0 +1,68 @@
+.settings-div{
+    display: none;
+    align-items: center;    
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    gap: 30px;
+    font-size: 25px;
+    translate: -50% -50%;
+    background-color: #464459;
+    color:#c5d2ce;
+    padding: 50px;
+    border: 5px solid;
+    transition: all 0.2s;
+    z-index: 3;
+}
+
+.btn-container{
+    position: fixed;
+}
+
+.settings-div input{
+    width: 210px;
+    accent-color: black;
+}
+
+.settings-div input::-webkit-slider-thumb{
+    border-radius: 0;
+    background:white;
+    border: 3px solid #372f3a; 
+}
+
+.settings-div button{
+    font-size: 25px;
+    width: 300px;
+    border: 3px solid ;
+    background-color: #372f3a;
+    color: #c5d2ce;
+    transition: all 0.2s;
+}
+
+.settings-div button:hover{
+    font-size: 30px;
+}
+
+.settings-div button:active{
+    margin-top:5px;
+}
+
+
+.input-container{
+    width:300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width:0px)and (max-width:500px){
+    .settings-div{
+        padding: 30px;
+        font-size: 20px;
+    }
+    .settings-div button{
+        font-size: 20px;
+    }
+}
