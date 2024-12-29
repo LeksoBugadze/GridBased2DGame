@@ -5,6 +5,8 @@ import { checkMute } from "./settingsScript.js";
 import { Modal } from "../Util/modalFunc.js";
 import { createGrid,renderGrid,grid,enemyArr,spawnVar,gridDivArr } from "../createMapFunc.js";
 import { maps} from "../mapArray.js";
+import { rewardFunc } from "../playerReward.js";
+import { spriteSizeChanger } from "../Util/screenSizeFunc.js";
 
 
 const finishCreationButtons = document.querySelector('.finish');
@@ -24,10 +26,12 @@ let clickedMove=false;
 
 
 
+
 let playerLocX=0;
 let playerLocY=0;
 
 
+let spriteSizeValue;
 const rows = 6;
 const cols = 7 ;
 
@@ -37,6 +41,14 @@ let lastRow=Math.round((rows*cols)-cols);
 
 const sound=document.querySelector('.hit-sound');
     
+document.addEventListener('DOMContentLoaded',()=>{
+    spriteSizeValue=spriteSizeChanger(window.innerWidth);
+})
+
+window.addEventListener('resize',()=>{
+    spriteSizeValue=spriteSizeChanger(window.innerWidth);
+})
+
 
 finishCreationButtons.addEventListener('click', () => {
     if(skillPoints>0){ 
@@ -313,7 +325,7 @@ function gameStartFunc() {
             {
                 const {frames,framePos}=animationFrames(playerLocX,playerLocY,enemy.getX(),enemy.getY());
                 
-                if(enemyDiv)animateSprite(enemyDiv, 128, frames,framePos);
+                if(enemyDiv)animateSprite(enemyDiv, spriteSizeValue, frames,framePos);
                 sound.load();
                 setTimeout(function() {
                     player.takeDamage(enemy.getDamage());
@@ -331,7 +343,7 @@ function gameStartFunc() {
                     {
                         const {frames,framePos}=animationFrames(playerLocX,playerLocY,enemy.getX(),enemy.getY());
                         
-                        if(enemy.getSprite())animateSprite(enemy.getSprite(), 128, frames,framePos);
+                        if(enemy.getSprite())animateSprite(enemy.getSprite(), spriteSizeValue, frames,framePos);
                         sound.load();
                         setTimeout(function() {
                             player.takeDamage(enemy.getDamage());
@@ -358,16 +370,16 @@ function gameStartFunc() {
                     attackDiv.style.backgroundRepeat='no-repeat';
                     attackDiv.style.position='absolute';
                     attackDiv.style.zIndex=3;
-                    attackDiv.style.width='128px'
-                    attackDiv.style.height='128px'
+                    attackDiv.style.width=`${spriteSizeValue}px`
+                    attackDiv.style.height=`${spriteSizeValue}px`
                     
                     playerS.appendChild(attackDiv);
                     
                     new Promise((resolve=>{
                         setTimeout(()=>{
-                            animateSprite(enemyDiv,128,8,1)},100)
+                            animateSprite(enemyDiv,spriteSizeValue,8,1)},100)
 
-                        animateSprite(attackDiv,128,9,0);
+                        animateSprite(attackDiv,spriteSizeValue,9,0);
                         const spellSound=document.querySelector('.spell');
                            
                             
@@ -389,7 +401,7 @@ function gameStartFunc() {
                     const chargingSound=document.querySelector('.charging');
                     chargingSound.load();
                     chargingSound.play();
-                    enemyDiv.style.backgroundPosition="-128px 0px"
+                    enemyDiv.style.backgroundPosition=`-${spriteSizeValue}px 0px`
                 }
                 
                 
@@ -509,7 +521,7 @@ function animationFrames(x1,y1,x2,y2){
 }
 
 function animateSprite(sprite, spriteSize, totalFrames,framePos) {
-    let currentPos=framePos*128;
+    let currentPos=framePos*spriteSize;
     let frame = 0;
 
     
@@ -620,7 +632,7 @@ function dealDamage(enemyArr) {
                     if (targetEnemyX == enemy.getX() && targetEnemyY == enemy.getY()) { 
                         
                         turnModal.style.display='block';
-                        animateSprite(playerSprite,128,frames,framePos);
+                        animateSprite(playerSprite,spriteSizeValue,frames,framePos);
                         
                         
                         player.staminaUse(5);
@@ -638,7 +650,7 @@ function dealDamage(enemyArr) {
                         if (enemy.getCurrentHealth() <= 0) {
                             const sprite=enemy.getSprite();
                             
-                            setTimeout(()=>{animateSprite(sprite,128,8,82)},500);
+                            setTimeout(()=>{animateSprite(sprite,spriteSizeValue,8,82)},500);
                             
                             setTimeout(function() {
                                 enemyArr.splice(index, 1);
