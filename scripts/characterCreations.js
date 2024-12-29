@@ -5,7 +5,7 @@ const startMenuDiv = document.querySelector('.buttons-div');
 const charCreation=document.querySelector('.character-creation');
 export const wrapper=document.querySelector('.wrapper-character-creation')
 
-
+  
 
 let skillPoints=3;
 
