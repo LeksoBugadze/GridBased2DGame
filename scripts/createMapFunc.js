@@ -2,7 +2,7 @@ import { createAndAppendImg } from "./Util/createAndAppendImgFunc.js";
 import { Enemy } from "./characters/enemies.js";
 import { maps } from "./mapArray.js";
 import { Modal } from "./Util/modalFunc.js";
-
+import { spriteSizeValue } from "./menu/mainGame.js";
 
 
 const rows=6;
@@ -140,7 +140,7 @@ function renderGrid(){
                     if(enemy.getType()==='range'&&enemy.charged){
                         const sprite=enemy.getSprite();
                         
-                        sprite.style.backgroundPosition="-128px 0px";
+                        sprite.style.backgroundPosition=`-${spriteSizeValue}px 0px`;
                         
                     }
                 })

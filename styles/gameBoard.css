@@ -70,7 +70,7 @@ img{
     height: 128px;
     transform-style: preserve-3d;
     z-index: 2;
-    background-size: cover;
+    background-size: 9000% 100%;
 }
 
 .enemy{
@@ -83,6 +83,7 @@ img{
     position: absolute;
     z-index: 2;
     background-size: cover;
+    background-size: 9000% 100%;
 }
 
 .range{
@@ -92,6 +93,7 @@ img{
     background-repeat: no-repeat;
     transform-style: preserve-3d;
     position: absolute;
+    background-size: 900% 100%;
     z-index: 2;
 }
 
@@ -144,7 +146,6 @@ img{
 
 @media (min-width:0px)and (max-width:541px) {
     .game{
-        display: flex;
         flex-direction: column;
         gap: 0px;
     }
@@ -176,7 +177,6 @@ img{
 
 @media (min-width:541px)and (max-width:1000px) {
     .game{
-        display: flex;
         flex-direction: column;
         gap: 0px;
     }
@@ -199,6 +199,7 @@ img{
     .player{
         height: 64px;
         width: 64px;
+        
     }
     .victory-modal p{
         font-size: 50px;
@@ -209,7 +210,6 @@ img{
 @media (min-width:1001px)and (max-width:1800px) {
     .game{
         display: flex;
-        /* flex-direction: column; */
         gap: 0px;
     }
     .grid{

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 window.addEventListener('resize',()=>{
     spriteSizeValue=spriteSizeChanger(window.innerWidth);
 })
-
+export {spriteSizeValue}
 
 finishCreationButtons.addEventListener('click', () => {
     if(skillPoints>0){ 
@@ -372,12 +372,12 @@ function gameStartFunc() {
                     attackDiv.style.zIndex=3;
                     attackDiv.style.width=`${spriteSizeValue}px`
                     attackDiv.style.height=`${spriteSizeValue}px`
-                    
+                    attackDiv.style.backgroundSize='900% 100%'
                     playerS.appendChild(attackDiv);
                     
                     new Promise((resolve=>{
                         setTimeout(()=>{
-                            animateSprite(enemyDiv,spriteSizeValue,8,1)},100)
+                            animateSprite(enemyDiv,spriteSizeValue,9,0)},100)
 
                         animateSprite(attackDiv,spriteSizeValue,9,0);
                         const spellSound=document.querySelector('.spell');
