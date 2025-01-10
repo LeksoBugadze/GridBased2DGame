@@ -7,7 +7,7 @@ import { createGrid,renderGrid,grid,enemyArr,spawnVar,gridDivArr } from "../crea
 import { maps} from "../mapArray.js";
 import { rewardFunc } from "../playerReward.js";
 import { spriteSizeChanger } from "../Util/screenSizeFunc.js";
-
+import { room } from "../createMapFunc.js";
 
 const finishCreationButtons = document.querySelector('.finish');
 const attack=document.querySelector('.attack');
@@ -541,10 +541,14 @@ function animateSprite(sprite, spriteSize, totalFrames,framePos) {
 function checkGridForEnemies(){
     const enemies=document.querySelectorAll('.enemy');
     let {playerX,playerY}=updatePlayerLoc();
+    console.log(room);
     if(enemies.length===0){
-        Modal('Room Cleared','#F0A036');
+        if(room<5){
+            Modal('Room Cleared','#F0A036');
         setTimeout(()=>{
             rewardFunc(rewards);
+            player.roundHealthRecovery();
+            player.roundStaminaRecovery();
             player.movePlayer(playerX,playerY,5,3,grid);
             grid.forEach((cell,index)=>grid[index].fill('empty'));
             // grid.fill('empty');
@@ -553,7 +557,11 @@ function checkGridForEnemies(){
             grid[0][5]='nextRoom';
             renderGrid();
            },1100)
+        }else{
+            Modal('Congratulations!','#F0A036')
+        }
     }
+        
 }
 
 

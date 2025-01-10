@@ -109,9 +109,7 @@ export class Player{
     }
 
     increaseDamage(param){
-        // console.log(`Before:${this.#damage}`);
         this.#damage+=param;
-        // console.log(`After:${this.#damage}`);
         return this.#damage;
     }
 
@@ -136,6 +134,25 @@ export class Player{
         if(this.#currentStamina>this.#stamina){
             this.#currentStamina=this.#stamina;
         }
+        document.querySelector('.stamina').innerHTML=`
+            ${this.#currentStamina} / ${this.#stamina}
+        `
+        return this.#currentStamina;
+    }
+
+    roundHealthRecovery(){
+        this.#currentHealth+=Math.round((this.#health*25)/100);
+        if(this.#currentHealth>this.#health){
+            this.#currentHealth=this.#health;
+        }
+        document.querySelector('.health-player').innerHTML=`
+            ${this.#currentHealth} / ${this.#health}
+        `
+        return this.#currentHealth;
+    }
+
+    roundStaminaRecovery(){
+        this.#currentStamina=this.#stamina;
         document.querySelector('.stamina').innerHTML=`
             ${this.#currentStamina} / ${this.#stamina}
         `

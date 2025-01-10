@@ -9,7 +9,7 @@ const rows=6;
 const cols=7;
 let chest=false;
 let clicked=false;
-let room=0;
+export let room=0;
 let spawnVar={
     spawn:false
 }
